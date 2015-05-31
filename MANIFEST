@@ -12,6 +12,7 @@ public/images/perldancer.jpg
 public/dispatch.cgi
 public/dispatch.fcgi
 public/javascripts/jquery.min.js
+public/javascripts/phaser.min.js
 public/404.html
 environments/development.yml
 environments/production.yml
