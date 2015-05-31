@@ -14,11 +14,10 @@
 
   <script type="text/javascript" src="javascripts/phaser.min.js"></script>
 
+  <script type="text/javascript" src="javascripts/index.js"></script>
+
 </head>
 <body>
   <% content %>
-  <div id="footer">
-  Powered by <a href="http://perldancer.org/">Dancer</a> <% dancer_version %>
-  </div>
 </body>
 </html>

@@ -11,6 +11,7 @@ public/images/perldancer-bg.jpg
 public/images/perldancer.jpg
 public/dispatch.cgi
 public/dispatch.fcgi
+public/javascripts/index.js
 public/javascripts/jquery.min.js
 public/javascripts/phaser.min.js
 public/404.html
@@ -21,3 +22,11 @@ t/001_base.t
 t/002_index_route.t
 config.yml
 bin/app.pl
+
+public/assets/baddie.png
+public/assets/diamond.png
+public/assets/dude.png
+public/assets/firstaid.png
+public/assets/platform.png
+public/assets/sky.png
+public/assets/star.png
