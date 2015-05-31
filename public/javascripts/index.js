@@ -68,16 +68,15 @@ function create() {
   stars.enableBody = true;
 
   //  Here we'll create 12 of them evenly spaced apart
-  for (var i = 0; i < 12; i++)
-  {
-      //  Create a star inside of the 'stars' group
-      var star = stars.create(i * 70, 0, 'star');
+  for (var i = 0; i < 12; i++) {
+    //  Create a star inside of the 'stars' group
+    var star = stars.create(i * 70, 0, 'star');
 
-      //  Let gravity do its thing
-      star.body.gravity.y = 300;
+    //  Let gravity do its thing
+    star.body.gravity.y = 300;
 
-      //  This just gives each star a slightly random bounce value
-      star.body.bounce.y = 0.7 + Math.random() * 0.2;
+    //  This just gives each star a slightly random bounce value
+    star.body.bounce.y = 0.7 + Math.random() * 0.2;
   }
 
   //  The score
@@ -111,26 +110,23 @@ function movePlayer ( player, cursors ) {
   //  Reset the players velocity (movement)
   player.body.velocity.x = 0;
 
-  if (cursors.left.isDown)
-  {
-      //  Move to the left
-      player.body.velocity.x = -150;
+  if (cursors.left.isDown) {
+    //  Move to the left
+    player.body.velocity.x = -150;
 
-      player.animations.play('left');
+    player.animations.play('left');
   }
-  else if (cursors.right.isDown)
-  {
-      //  Move to the right
-      player.body.velocity.x = 150;
+  else if (cursors.right.isDown) {
+    //  Move to the right
+    player.body.velocity.x = 150;
 
-      player.animations.play('right');
+    player.animations.play('right');
   }
-  else
-  {
-      //  Stand still
-      player.animations.stop();
+  else {
+    //  Stand still
+    player.animations.stop();
 
-      player.frame = 4;
+    player.frame = 4;
   }
 
   //  Allow the player to jump if they are touching the ground.
