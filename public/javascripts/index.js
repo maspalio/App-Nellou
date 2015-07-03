@@ -4,6 +4,8 @@ function preload() {
   game.load.image('sky', 'assets/sky.png');
   game.load.image('ground', 'assets/platform.png');
   game.load.image('star', 'assets/star.png');
+  game.load.image('left', 'assets/left-arrow.gif');
+  game.load.image('right', 'assets/right-arrow.gif');
   game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 }
 
@@ -32,6 +34,10 @@ function create() {
 
   ground.scale.setTo(2, 2);     // Scale it to fit the width of the game (the original sprite is 400x32 in size)
   ground.body.immovable = true; // This stops it from falling away when you jump on it
+
+  game.input.multiInputOverride = Phaser.Input.TOUCH_OVERRIDES_MOUSE;
+  // game.add.button(this.game.world.width - 200, game.world.height - 50, 'left',  function () { movePlayerLeft  ( player ) });
+  // game.add.button(this.game.world.width - 100, game.world.height - 50, 'right', function () { movePlayerRight ( player ) });
 
   // Now let's create two ledges
   var ledge = platforms.create(400, 400, 'ground');
@@ -99,24 +105,29 @@ function collectStar (player, star) {
   scoreText.text = 'Score: ' + score;
 }
 
+function movePlayerLeft ( player ) {
+  player.body.velocity.x = -150;
+
+  player.animations.play('left');
+}
+
+function movePlayerRight ( player ) {
+  player.body.velocity.x = 150;
+
+  player.animations.play('right');
+}
+
 function movePlayer ( player, cursors ) {
   //  Reset the players velocity (movement)
   player.body.velocity.x = 0;
 
-  if (cursors.left.isDown) {
-    //  Move to the left
-    player.body.velocity.x = -150;
-
-    player.animations.play('left');
+  if (cursors.left.isDown || (game.input.mousePointer.x < game.world.height/2 && game.input.mousePointer.isDown)) {
+    movePlayerLeft ( player );
   }
-  else if (cursors.right.isDown) {
-    //  Move to the right
-    player.body.velocity.x = 150;
-
-    player.animations.play('right');
+  else if (cursors.right.isDown || (game.input.mousePointer.x > game.world.height/2 && game.input.mousePointer.isDown)) {
+    movePlayerRight ( player );
   }
   else {
-    //  Stand still
     player.animations.stop();
 
     player.frame = 4;
